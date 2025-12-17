@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FAFAFA; /* brand-bg-light - off-white */
+  color: #1F1F1F; /* brand-text-primary */
+  /* Padrão de linhas paralelas em verde oliva */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='lines' x='0' y='0' width='100' height='20' patternUnits='userSpaceOnUse'%3E%3Cline x1='0' y1='0' x2='100' y2='0' stroke='%234A5D46' stroke-width='1' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23lines)'/%3E%3C/svg%3E");
+}
+
+/* Animações customizadas */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar personalizada */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Botão 3D Premium - Efeito Persuasivo */
+.btn-3d-premium {
+  /* Sombras múltiplas para profundidade 3D */
+  box-shadow: 
+    0 8px 32px rgba(139, 69, 19, 0.5),  /* Glow marrom externo grande */
+    0 4px 16px rgba(139, 69, 19, 0.4),  /* Profundidade base */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),  /* Borda de luz superior */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);  /* Borda de sombra inferior */
+  
+  /* Bordas 3D */
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Transform 3D */
+  transform-style: preserve-3d;
+  transition: all 200ms ease-out;
+}
+
+.btn-3d-premium:hover {
+  /* Elevação e rotação 3D no hover */
+  transform: perspective(1000px) rotateX(-2deg) translateY(-2px) scale(1.05);
+  
+  /* Sombras aumentadas no hover */
+  box-shadow: 
+    0 12px 48px rgba(139, 69, 19, 0.6),
+    0 6px 24px rgba(139, 69, 19, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d-premium:active {
+  /* Compressão e movimento para baixo no active */
+  transform: perspective(1000px) rotateX(-1deg) translateY(2px) scale(0.96);
+  
+  /* Sombras reduzidas no active */
+  box-shadow: 
+    0 4px 16px rgba(139, 69, 19, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
