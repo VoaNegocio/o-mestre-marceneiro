@@ -30,14 +30,15 @@ function GalleryModal({
   }, [isOpen, onClose])
 
   if (!isOpen || !images || images.length === 0) {
-    return null // Não renderiza se não estiver aberto
+    return null
   }
 
   const currentImage = images[currentIndex]
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/80 backdrop-blur-2xl p-4 pt-8 md:pt-20 md:pb-8 cursor-pointer overflow-y-auto"
+      // CORREÇÃO AQUI: 'items-center' em vez de 'items-start' e remoção de paddings complexos
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 cursor-pointer overflow-hidden"
       onClick={onClose}
     >
       {/* Overlay com feedback visual */}
@@ -45,90 +46,83 @@ function GalleryModal({
 
       {/* Container do modal */}
       <div
-        className="relative max-w-5xl w-full max-h-[90vh] cursor-default flex flex-col my-4 md:my-0"
+        // Ajuste de altura máxima para mobile (95vh) para aproveitar melhor a tela
+        className="relative max-w-5xl w-full max-h-[95vh] md:max-h-[90vh] cursor-default flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Container da imagem */}
-        <div className="bg-white rounded-sm overflow-hidden shadow-2xl border border-brand-border p-4 md:p-6 relative flex flex-col max-h-[90vh]">
-          {/* Botão fechar - Dentro do modal */}
+        {/* Container da imagem e conteúdo */}
+        <div className="bg-white rounded-sm overflow-hidden shadow-2xl border border-brand-border p-4 md:p-6 relative flex flex-col h-full max-h-full">
+          {/* Botão fechar */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-brand-text-secondary hover:text-brand-text-primary transition-all duration-300 p-2 md:p-2.5 rounded-sm hover:bg-brand-border bg-white/90 backdrop-blur-sm z-20 border border-brand-border hover:border-brand-olive"
+            className="absolute top-2 right-2 md:top-4 md:right-4 text-brand-text-secondary hover:text-brand-text-primary transition-all duration-300 p-2 rounded-sm hover:bg-brand-border bg-white/90 backdrop-blur-sm z-30 border border-brand-border hover:border-brand-olive shadow-sm"
             aria-label="Fechar modal"
           >
-            <FiX className="w-5 h-5" />
+            <FiX className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
-          {/* Imagem */}
-          <div className="relative w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
-            {/* Placeholder ou imagem real */}
+          {/* Área da Imagem */}
+          <div className="relative w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-brand-bg-light/30 rounded-sm">
             {currentImage.src ? (
               <img
                 src={currentImage.src}
                 alt={currentImage.alt || currentImage.nome}
-                className="max-w-full max-h-[calc(90vh-280px)] w-auto h-auto object-contain"
+                // Ajuste no object-contain para garantir que a imagem inteira apareça sem cortes
+                className="max-w-full max-h-full w-auto h-auto object-contain shadow-sm"
               />
             ) : (
-              <div className="w-full h-[60vh] bg-brand-bg-light rounded-sm flex items-center justify-center border border-brand-border">
-                <span className="text-brand-text-muted text-xl font-sans font-medium">
-                  {currentImage.nome}
-                </span>
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-brand-text-muted text-lg">Imagem indisponível</span>
               </div>
             )}
 
-            {/* Navegação com setas */}
+            {/* Navegação */}
             {images.length > 1 && (
               <>
                 <button
-                  onClick={onPrev}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-brand-border hover:border-brand-olive text-brand-text-primary hover:text-brand-olive p-3 rounded-sm hover:scale-110 transition-all duration-300 z-10 shadow-lg"
-                  aria-label="Imagem anterior"
+                  onClick={(e) => { e.stopPropagation(); onPrev(); }}
+                  className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md border border-brand-border hover:border-brand-olive text-brand-text-primary hover:text-brand-olive p-2 md:p-3 rounded-full hover:scale-105 transition-all duration-300 z-20 shadow-lg group"
                 >
-                  <FiChevronLeft className="w-5 h-5" />
+                  <FiChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-0.5 transition-transform" />
                 </button>
                 <button
-                  onClick={onNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-brand-border hover:border-brand-olive text-brand-text-primary hover:text-brand-olive p-3 rounded-sm hover:scale-110 transition-all duration-300 z-10 shadow-lg"
-                  aria-label="Próxima imagem"
+                  onClick={(e) => { e.stopPropagation(); onNext(); }}
+                  className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md border border-brand-border hover:border-brand-olive text-brand-text-primary hover:text-brand-olive p-2 md:p-3 rounded-full hover:scale-105 transition-all duration-300 z-20 shadow-lg group"
                 >
-                  <FiChevronRight className="w-5 h-5" />
+                  <FiChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </>
             )}
           </div>
 
-          {/* Informações do projeto */}
-          <div className="mt-4 text-center flex-shrink-0">
-            <h3 className="font-serif text-brand-text-primary text-2xl md:text-3xl font-bold mb-2">
+          {/* Rodapé do Modal (Info) */}
+          <div className="mt-4 md:mt-6 text-center flex-shrink-0">
+            <h3 className="font-serif text-brand-text-primary text-xl md:text-3xl font-bold mb-1 md:mb-2">
               {currentImage.nome}
             </h3>
             {currentImage.descricao && (
-              <p className="font-sans text-brand-text-secondary text-sm md:text-base max-w-2xl mx-auto">
+              <p className="font-sans text-brand-text-secondary text-xs md:text-base max-w-2xl mx-auto line-clamp-2 md:line-clamp-none">
                 {currentImage.descricao}
               </p>
             )}
           </div>
 
-          {/* Contador e indicadores */}
+          {/* Indicadores */}
           {images.length > 1 && (
-            <div className="mt-6 flex items-center justify-center gap-4 flex-shrink-0">
-              {/* Contador */}
-              <span className="font-sans text-brand-text-secondary text-sm md:text-base font-medium">
+            <div className="mt-4 flex items-center justify-center gap-4 flex-shrink-0">
+              <span className="font-sans text-brand-text-secondary text-xs md:text-sm font-medium">
                 {currentIndex + 1} / {images.length}
               </span>
-
-              {/* Indicadores */}
-              <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2">
                 {images.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => onSelectImage(index)}
+                    onClick={(e) => { e.stopPropagation(); onSelectImage(index); }}
                     className={`h-1 rounded-full transition-all duration-300 ${
                       index === currentIndex
                         ? 'w-8 bg-brand-olive'
                         : 'w-1 bg-brand-border hover:bg-brand-olive/50'
                     }`}
-                    aria-label={`Ir para projeto ${index + 1}`}
                   />
                 ))}
               </div>
@@ -141,4 +135,3 @@ function GalleryModal({
 }
 
 export default GalleryModal
-
