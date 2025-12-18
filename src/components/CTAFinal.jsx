@@ -6,8 +6,9 @@ const CTAFinal = () => {
   const whatsappUrl = getWhatsAppUrl('ctaFinal')
 
   // Endereço Atualizado - Curitiba
-  const endereco = 'Marcenaria Curitiba | O Mestre Marceneiro - Curitiba, PR'
-  const googleMapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.26342478274!2d-49.36172019999999!3d-25.4628779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce274f4ae7ed5%3A0x5b5d42e066a920cf!2sMarcenaria%20Curitiba%20%7C%20O%20Mestre%20Marceneiro!5e0!3m2!1spt-BR!2sbr!4v1766063718630!5m2!1spt-BR!2sbr'
+  const endereco = 'R. Abraham Leiser Stier, 348 - Cidade Industrial de Curitiba, Curitiba - PR'
+  const googleMapsClickUrl = 'https://www.google.com/maps/search/?api=1&query=R.+Abraham+Leiser+Stier,+348+-+Cidade+Industrial+de+Curitiba,+Curitiba+-+PR,+81260-010'
+  const googleMapsEmbedUrl = 'https://maps.google.com/maps?width=100%25&height=600&hl=pt-BR&q=R.+Abraham+Leiser+Stier,+348+-+Cidade+Industrial+de+Curitiba,+Curitiba+-+PR,+81260-010&t=&z=15&ie=UTF8&iwloc=B&output=embed'
 
   return (
     <section id="contato" className="py-16 md:py-24 lg:py-32 px-4 bg-brand-olive relative overflow-hidden border-t border-brand-border/10">
@@ -49,7 +50,7 @@ const CTAFinal = () => {
           >
             {/* Overlay link para redirecionar */}
             <a
-              href="https://maps.google.com/?q=Marcenaria+Curitiba+O+Mestre+Marceneiro"
+              href={googleMapsClickUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 z-10 cursor-pointer"
@@ -99,7 +100,7 @@ const CTAFinal = () => {
                     Ateliê
                   </h4>
                   <a
-                    href="https://maps.google.com/?q=Marcenaria+Curitiba+O+Mestre+Marceneiro"
+                    href={googleMapsClickUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-sans text-brand-bg-light/80 leading-relaxed hover:text-white transition-colors block"
@@ -145,7 +146,7 @@ const CTAFinal = () => {
               </div>
             </div>
 
-            {/* CTA Button Inverted - Pulse Animation */}
+            {/* CTA Button - WhatsApp Green Pulse */}
             <motion.a
               href={whatsappUrl}
               target="_blank"
@@ -154,9 +155,9 @@ const CTAFinal = () => {
               whileTap={{ scale: 0.95 }}
               animate={{
                 boxShadow: [
-                  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-                  "0 0 15px 2px rgba(255, 255, 255, 0.3)",
-                  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+                  "0 4px 6px -1px rgba(37, 211, 102, 0.2), 0 2px 4px -1px rgba(37, 211, 102, 0.1)",
+                  "0 0 20px 5px rgba(37, 211, 102, 0.4)",
+                  "0 4px 6px -1px rgba(37, 211, 102, 0.2), 0 2px 4px -1px rgba(37, 211, 102, 0.1)"
                 ]
               }}
               transition={{
@@ -171,11 +172,11 @@ const CTAFinal = () => {
                   damping: 10
                 }
               }}
-              className="inline-flex items-center gap-3 border border-white bg-white text-brand-olive px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden group/btn w-full justify-center rounded-sm"
+              className="inline-flex items-center gap-3 border border-[#25D366] bg-[#25D366] text-white px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden group/btn w-full justify-center rounded-sm"
             >
-              {/* Shimmer effect - Inverted for dark background */}
+              {/* Shimmer effect - White shine on Green */}
               <motion.div
-                className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-brand-olive/10 to-transparent w-[200%]"
+                className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent w-[200%]"
                 initial={{ x: '-150%' }}
                 animate={{ x: '150%' }}
                 transition={{
@@ -190,7 +191,7 @@ const CTAFinal = () => {
               <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
                 Iniciar Projeto Agora
               </span>
-              <div className="relative z-10 w-0.5 h-4 bg-brand-olive/30 transition-colors duration-300"></div>
+              <div className="relative z-10 w-0.5 h-4 bg-white/30 transition-colors duration-300"></div>
               <motion.svg
                 className="relative z-10 w-4 h-4 transition-colors duration-300"
                 fill="none"
