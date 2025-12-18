@@ -13,23 +13,23 @@ export const projects = {
     },
     {
       id: 'cozinha-2',
-      nome: 'Cozinha Herança',
-      descricao: 'Design clássico com portas em MDF envernizado e puxadores em latão. Uma peça que atravessa gerações.',
+      nome: 'Cozinha Ateliê',
+      descricao: 'Design moderno com portas em madeira nobre e iluminação LED integrada.',
       categoria: 'Cozinha',
       src: '/projetos/cozinha/cozinha2.jpg',
-      tags: ['MDF Envernizado', 'Latão', 'Acabamento Premium'],
+      tags: ['Madeira Nobre', 'Iluminação LED', 'Acabamento Premium'],
     },
     {
       id: 'cozinha-3',
-      nome: 'Cozinha Moderna',
-      descricao: 'Estilo contemporâneo com ilha central em mármore e móveis sob medida. Minimalismo com alma.',
+      nome: 'Cozinha Ateliê',
+      descricao: 'Estilo contemporâneo com ilha central em mármore e móveis sob medida. Elegância com alma.',
       categoria: 'Cozinha',
       src: '/projetos/cozinha/cozinha3.jpg',
-      tags: ['Mármore', 'Design Minimalista', 'Ilha Central'],
+      tags: ['Mármore', 'Design Moderno', 'Ilha Central'],
     },
     {
       id: 'cozinha-4',
-      nome: 'Cozinha Premium',
+      nome: 'Cozinha Ateliê',
       descricao: 'Execução exclusiva com acabamento em laca high-gloss e maquinário de última geração integrado.',
       categoria: 'Cozinha',
       src: '/projetos/cozinha/cozinha4.jpg',
@@ -108,7 +108,7 @@ export const projects = {
       tags: ['Atemporal', 'Clássico Moderno', 'Legado Permanente'],
     },
   ],
-  
+
   quarto: [
     {
       id: 'quarto-1',
@@ -175,12 +175,12 @@ export const projects = {
       tags: ['Solução Completa', 'Harmonia Visual', 'Funcionalidade Total'],
     },
   ],
-  
+
   escritorio: [
     {
       id: 'escritorio-1',
       nome: 'Escritório Executivo',
-      descricao: 'Mesa em madeira nobre com sistema de gavetas com trava e iluminação integrada. Onde decisões importantes são tomadas.',
+      descricao: 'Escritorio moderno com design de luxo e iluminação integrada. Onde decisões importantes são tomadas.',
       categoria: 'Escritório',
       src: '/projetos/escritorio/sala-do-escritorio1.jpg',
       tags: ['Madeira Nobre', 'Sistema de Gavetas', 'Iluminação Integrada'],
@@ -242,7 +242,7 @@ export const projects = {
       tags: ['Alta Qualidade', 'Design Exclusivo', 'Reflexo da Excelência'],
     },
   ],
-  
+
   banheiro: [
     {
       id: 'banheiro-1',
@@ -301,18 +301,8 @@ export const projects = {
       tags: ['Solução Completa', 'Harmonia', 'Arte do Cuidado'],
     },
   ],
-  
-  sala: [
-    // Categoria sala - projetos serão adicionados quando imagens estiverem disponíveis
-    // {
-    //   id: 'sala-1',
-    //   nome: 'Sala de Estar',
-    //   descricao: 'Painéis e estantes customizadas que se integram perfeitamente ao ambiente. Onde a arte encontra o lar.',
-    //   categoria: 'Sala',
-    //   src: '/projetos/sala/sala1.jpg',
-    //   tags: ['Painéis Customizados', 'Estantes Integradas', 'Design Arquitetônico'],
-    // },
-  ],
+
+
 }
 
 // Categorias disponíveis
@@ -321,5 +311,4 @@ export const categories = [
   { id: 'quarto', nome: 'Quarto' },
   { id: 'escritorio', nome: 'Escritório' },
   { id: 'banheiro', nome: 'Banheiro' },
-  { id: 'sala', nome: 'Sala' },
 ]

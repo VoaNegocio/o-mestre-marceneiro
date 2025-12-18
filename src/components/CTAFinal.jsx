@@ -12,15 +12,15 @@ const CTAFinal = () => {
     <section id="contato" className="py-16 md:py-24 lg:py-32 px-4 bg-brand-bg-light relative overflow-hidden border-t border-brand-border">
       {/* Gradiente sutil com verde oliva */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#4A5D46]/3 via-transparent to-[#4A5D46]/5"></div>
-      
+
       {/* Padrão de textura em verde oliva */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='lines' x='0' y='0' width='100' height='20' patternUnits='userSpaceOnUse'%3E%3Cline x1='0' y1='0' x2='100' y2='0' stroke='%234A5D46' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23lines)'/%3E%3C/svg%3E")`,
         }}
       ></div>
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Título da seção */}
         <motion.div
@@ -114,7 +114,7 @@ const CTAFinal = () => {
               className="inline-flex items-center gap-3 border border-brand-olive bg-brand-olive text-white px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden group/btn w-full justify-center"
             >
               {/* Shimmer effect - contínuo */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                 animate={{
                   x: ['-100%', '100%'],
@@ -126,9 +126,9 @@ const CTAFinal = () => {
                   ease: "easeInOut",
                 }}
               ></motion.div>
-              
+
               <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
-                Consultar Agenda
+                Iniciar Projeto Agora
               </span>
               <div className="relative z-10 w-0.5 h-4 bg-white/30 transition-colors duration-300"></div>
               <motion.svg

@@ -46,8 +46,8 @@ function GalleryModal({
 
       {/* Container do modal */}
       <div
-        // Ajuste de altura máxima para mobile (85vh) para prevenir corte por causa do padding parent
-        className="relative max-w-5xl w-full max-h-[85vh] md:max-h-[90vh] cursor-default flex flex-col"
+        // Ajuste de altura máxima e margem superior para posicionamento visual ideal
+        className="relative max-w-5xl w-full max-h-[85vh] md:max-h-[85vh] md:mt-8 cursor-default flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Container da imagem e conteúdo */}
