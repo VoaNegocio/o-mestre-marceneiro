@@ -5540,3 +5540,75 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+---
+
+## 🚀 Iteração de Design & UX (Dezembro 2025)
+
+**Resumo:** Refino visual significativo e substituição estratégica de seções para aumentar a conversão. Foco total em "Mobile Experience" e "Prova Social".
+
+### 1. Transformação: De "Benefícios" para "Depoimentos"
+**Problema:** A seção de Benefícios era muito textual e pouco engajadora.
+**Solução:** Substituída por uma seção de Depoimentos (Prova Social) com reviews realistas de 5 estrelas.
+**Detalhes Técnicos:**
+- **Scroll Horizontal no Mobile:** Implementado com `flex`, `overflow-x-auto` e `snap-x` para economizar altura de tela.
+- **Indicadores de Navegação (Dots):** Adicionado feedback visual (bolinhas) que rastreiam o scroll atual usando `useState` e `onScroll`.
+- **Rápida Substituição:** Troca de componente mantendo a integridade do layout.
+
+### 2. Redesign da Seção de Contato
+**Problema:** A seção era genérica e o mapa estava mal posicionado.
+**Soluções:**
+- **Reordenamento:** Mapa movido para o topo (mobile) / esquerda (desktop) para ser o primeiro impacto visual.
+- **Mapa Clicável:** Adicionada camada invisível (`absolute inset-0`) sobre o iframe que abre o Google Maps em nova aba ao clicar, aumentando a chance de visita física.
+- **Hierarquia Visual:** Uso de ícones premium (`Feather Icons`) para Endereço, WhatsApp e Horário, substituindo listas simples.
+- **Glassmorphism:** Card de contato com fundo translúcido para modernidade.
+
+### 3. Refinamentos de UI/UX (Polimento)
+- **Shimmer Effect Controlado:** Removido do Hero (para limpar a visualização) e mantido apenas nos botões de conversão final (CTAFinal, ProjectCards) com animação cronometrada.
+- **Mobile Layout "Sobre":** Inversão de ordem (Título -> Imagem -> Texto) via classes CSS (`order-last`, `md:order-none`) ou duplicação controlada por display (`block lg:hidden`).
+- **Navegação Corrigida:** Atualização global de links internos (`#beneficios` -> `#depoimentos`).
+- **Configuração Centralizada:** Centralização do número de WhatsApp em `config/whatsapp.js` facilitou a atualização global para o número real do cliente.
+
+### 💡 Aprendizados Chave
+1. **Maps como CTA:** Um mapa estático é informativo; um mapa linkado é uma ferramenta de conversão.
+2. **Scroll vs Grid:** No mobile, transformar grids em carrosséis horizontais (com snap) melhora drasticamente a experiência de navegação.
+3. **Indicadores Visuais:** Ao usar scroll horizontal, indicadores (dots) são essenciais para o usuário entender que "tem mais coisa para o lado".
+
+---
+
+## 🏗️ Análise de Arquitetura (Dezembro 2025)
+
+**Visão Geral:** Aplicação Single Page Application (SPA) moderna, construída com foco em performance, modularidade e experiência do usuário premium.
+
+### 1. Stack Tecnológico
+- **Core:** React 19.2 + Vite 7.2 (Build Tool ultra-rápida).
+- **Estilização:** Tailwind CSS 3.4 (Utility-first para rapidez e consistência).
+- **Animação:** Framer Motion 12 (Animações declarativas e gestos).
+- **Ícones:** React Icons (Biblioteca unificada).
+
+### 2. Estrutura de Diretórios
+A organização segue o padrão de "Feature/Concept Separation":
+- `src/components/`: Componentes UI reutilizáveis (Hero, CTA, Modal).
+- `src/data/`: Separação de dados estáticos (catálogo de projetos) da lógica de apresentação.
+- `src/config/`: Centralização de regras de negócio e constantes (ex: Números de WhatsApp, mensagens padrão).
+- `public/`: Assets estáticos otimizados (imagens, ícones).
+- `scripts/`: Ferramentas de automação (otimização de imagens).
+
+### 3. Padrões de Design Identificados
+- **Atomic Design Adaptado:** Componentes construídos como blocos independentes (ex: `HeroBackground` usado dentro de `Hero`).
+- **Composition over Inheritance:** Uso de `children` e props para compor UIs complexas (ex: `GalleryModal`).
+- **Centralized Configuration:** O arquivo `whatsapp.js` atua como uma "Single Source of Truth" para contatos, evitando hardcoding espalhado.
+- **Mobile-First Responsive:** Classes Tailwind priorizando mobile (ex: `grid-cols-1 md:grid-cols-2`).
+
+### 4. Performance & UX
+- **Code Splitting:** Vite realiza o bundle splitting automático.
+- **Glassmorphism Dinâmico:** Uso de `backdrop-blur` e opacidade controlada para criar profundidade sem pesar no navegador.
+- **Lazy Interaction:** Mapas e Modais carregados ou ativados sob demanda (o mapa é um iframe, mas o overlay previne interação acidental de scroll).
+
+### 5. Escalabilidade
+A arquitetura atual permite fácil expansão:
+- **Novas Seções:** Basta criar o componente e importar em `App.jsx`.
+- **Mais Projetos:** Adicionar objetos ao array em `src/data/projects.js`.
+- **Temas:** Variáveis CSS e configs do Tailwind permitem trocas globais de cor.
+
+---

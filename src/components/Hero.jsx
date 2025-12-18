@@ -13,7 +13,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Carrossel de imagens de fundo */}
       <HeroBackground />
-      
+
       {/* Overlay de textura sutil (sobre o carrossel) */}
       <div className="absolute inset-0 opacity-[0.02] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] z-[1]"></div>
 
@@ -37,11 +37,11 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
           className="inline-block px-6 md:px-8 lg:px-10 py-4 md:py-6 lg:py-8 mb-6 md:mb-8 rounded-lg"
           style={{
-            background: 'rgba(255, 255, 255, 0.6)',
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            background: 'rgba(255, 255, 255, 0.75)', // Mais opacidade para contraste
+            backdropFilter: 'blur(12px)', // Mais blur para suavidade
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255, 255, 255, 0.6)', // Borda mais definida
+            boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1)', // Sombra mais profunda
           }}
         >
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-text-primary leading-tight tracking-tight">
@@ -59,10 +59,10 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
           className="inline-block px-5 md:px-6 lg:px-8 py-3 md:py-4 lg:py-5 mb-10 md:mb-14 rounded-lg max-w-3xl mx-auto"
           style={{
-            background: 'rgba(255, 255, 255, 0.6)',
+            background: 'rgba(255, 255, 255, 0.75)', // Opacidade aumentada para consistência
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
+            border: '1px solid rgba(255, 255, 255, 0.6)',
             boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
           }}
         >
@@ -84,20 +84,8 @@ const Hero = () => {
             whileTap={{ scale: 0.98 }}
             className="group inline-flex items-center gap-3 border border-brand-olive bg-brand-olive text-white px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden"
           >
-            {/* Shimmer effect - contínuo */}
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut",
-              }}
-            ></motion.div>
-            
+
+
             <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
               Consultar Agenda
             </span>
@@ -131,10 +119,10 @@ const Hero = () => {
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-3 font-sans text-sm md:text-base text-brand-text-secondary hover:text-brand-olive transition-all duration-300 px-5 md:px-6 py-3 md:py-4 rounded-lg"
             style={{
-              background: 'rgba(255, 255, 255, 0.3)',
+              background: 'rgba(255, 255, 255, 0.5)', // Aumentado de 0.3 para 0.5
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              border: '1px solid rgba(255, 255, 255, 0.4)',
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
             }}
             onMouseEnter={(e) => {

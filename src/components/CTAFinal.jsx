@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { getWhatsAppUrl } from '../config/whatsapp'
+import { FiMapPin, FiClock, FiMessageCircle } from 'react-icons/fi'
 
 const CTAFinal = () => {
   const whatsappUrl = getWhatsAppUrl('ctaFinal')
 
-  // TODO: Substituir com o endereço real e coordenadas do Google Maps
-  const endereco = 'Seu Endereço Completo, Cidade - Estado, CEP'
-  const googleMapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975762825934!2d-46.63333132379838!3d-23.55051997880619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59a00d49a315%3A0x1aa878b9a4e84400!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890'
+  // Endereço Atualizado - Curitiba
+  const endereco = 'Marcenaria Curitiba | O Mestre Marceneiro - Curitiba, PR'
+  const googleMapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.26342478274!2d-49.36172019999999!3d-25.4628779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce274f4ae7ed5%3A0x5b5d42e066a920cf!2sMarcenaria%20Curitiba%20%7C%20O%20Mestre%20Marceneiro!5e0!3m2!1spt-BR!2sbr!4v1766063718630!5m2!1spt-BR!2sbr'
 
   return (
     <section id="contato" className="py-16 md:py-24 lg:py-32 px-4 bg-brand-bg-light relative overflow-hidden border-t border-brand-border">
@@ -41,64 +42,107 @@ const CTAFinal = () => {
 
         {/* Layout em duas colunas: Informações + Mapa */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Coluna 1: Informações de Contato */}
+          {/* Coluna 1: Google Maps (Agora à esquerda/topo) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative h-[400px] md:h-[500px] lg:h-full min-h-[400px] border border-brand-border overflow-hidden rounded-sm shadow-lg group"
+          >
+            {/* Overlay link para redirecionar */}
+            <a
+              href="https://maps.google.com/?q=Marcenaria+Curitiba+O+Mestre+Marceneiro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 z-10 cursor-pointer"
+              aria-label="Ver localização no Google Maps"
+            >
+              {/* Hover effect optional instruction can go here, for now just cursor-pointer */}
+            </a>
+            <iframe
+              src={googleMapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full"
+              title="Localização O Mestre Marceneiro"
+            ></iframe>
+          </motion.div>
+
+          {/* Coluna 2: Informações de Contato (Agora à direita/baixo) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8"
           >
             {/* Card de Informações */}
-            <div className="bg-brand-bg-surface border border-brand-border p-6 md:p-8 space-y-6">
+            <div className="bg-brand-bg-surface/80 backdrop-blur-sm border border-brand-border p-6 md:p-8 space-y-8 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-sm">
               <div>
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-brand-text-primary mb-6">
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-brand-text-primary mb-2">
                   O Mestre Marceneiro
                 </h3>
-                <div className="w-16 h-0.5 bg-brand-olive mb-6"></div>
+                <p className="font-sans text-brand-text-secondary text-sm">
+                  Transformando madeira em arte desde 2010.
+                </p>
               </div>
 
               {/* Endereço */}
-              <div className="flex items-start gap-4">
-                <div className="w-0.5 h-12 bg-brand-olive mt-1"></div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 flex-shrink-0 bg-brand-olive/10 rounded-lg flex items-center justify-center text-brand-olive group-hover:bg-brand-olive group-hover:text-white transition-all duration-300">
+                  <FiMapPin className="w-6 h-6" />
+                </div>
                 <div className="flex-1">
-                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-2">
-                    Endereço
+                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-1">
+                    Ateliê
                   </h4>
-                  <p className="font-sans text-brand-text-secondary leading-relaxed">
+                  <a
+                    href="https://maps.google.com/?q=Marcenaria+Curitiba+O+Mestre+Marceneiro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-brand-text-secondary leading-relaxed hover:text-brand-olive transition-colors block"
+                  >
                     {endereco}
-                  </p>
+                  </a>
                 </div>
               </div>
 
               {/* WhatsApp */}
-              <div className="flex items-start gap-4">
-                <div className="w-0.5 h-12 bg-brand-olive mt-1"></div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 flex-shrink-0 bg-brand-olive/10 rounded-lg flex items-center justify-center text-brand-olive group-hover:bg-brand-olive group-hover:text-white transition-all duration-300">
+                  <FiMessageCircle className="w-6 h-6" />
+                </div>
                 <div className="flex-1">
-                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-2">
+                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-1">
                     WhatsApp
                   </h4>
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-sans text-brand-olive hover:text-brand-olive/80 transition-colors duration-300"
+                    className="font-sans text-brand-text-secondary hover:text-brand-olive transition-colors duration-300 block"
                   >
-                    Falar agora
+                    Atendimento rápido e personalizado
                   </a>
                 </div>
               </div>
 
-              {/* Horários (opcional) */}
-              <div className="flex items-start gap-4">
-                <div className="w-0.5 h-12 bg-brand-olive mt-1"></div>
+              {/* Horários */}
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 flex-shrink-0 bg-brand-olive/10 rounded-lg flex items-center justify-center text-brand-olive group-hover:bg-brand-olive group-hover:text-white transition-all duration-300">
+                  <FiClock className="w-6 h-6" />
+                </div>
                 <div className="flex-1">
-                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-2">
-                    Horário de Atendimento
+                  <h4 className="font-serif text-lg font-bold text-brand-text-primary mb-1">
+                    Horário
                   </h4>
                   <p className="font-sans text-brand-text-secondary leading-relaxed">
-                    Segunda a Sexta: 8h às 18h<br />
-                    Sábado: 8h às 12h
+                    Seg a Sex: 8h às 18h<br />
                   </p>
                 </div>
               </div>
@@ -113,19 +157,19 @@ const CTAFinal = () => {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 border border-brand-olive bg-brand-olive text-white px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden group/btn w-full justify-center"
             >
-              {/* Shimmer effect - contínuo */}
+              {/* Shimmer effect - Premium Shine */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                animate={{
-                  x: ['-100%', '100%'],
-                }}
+                className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent w-[200%]"
+                initial={{ x: '-150%' }}
+                animate={{ x: '150%' }}
                 transition={{
-                  duration: 3,
+                  duration: 1.5,
                   repeat: Infinity,
-                  repeatDelay: 1,
+                  repeatDelay: 3,
                   ease: "easeInOut",
                 }}
               ></motion.div>
+
 
               <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
                 Iniciar Projeto Agora
@@ -153,27 +197,6 @@ const CTAFinal = () => {
                 />
               </motion.svg>
             </motion.a>
-          </motion.div>
-
-          {/* Coluna 2: Google Maps */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative h-[400px] md:h-[500px] lg:h-full min-h-[400px] border border-brand-border overflow-hidden"
-          >
-            <iframe
-              src={googleMapsEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 w-full h-full"
-              title="Localização O Mestre Marceneiro"
-            ></iframe>
           </motion.div>
         </div>
       </div>

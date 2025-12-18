@@ -37,8 +37,10 @@ const HeroBackground = () => {
             className="w-full h-full object-cover"
             loading="eager"
           />
-          {/* Overlay sutil reduzido para melhor visualização das imagens */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 min-h-screen bg-gradient-to-b from-white/30 via-white/20 to-white/30"></div>
+          {/* Vignette cinematográfica: sombra nas bordas para focar no centro */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]"></div>
+          {/* Gradiente inferior suave para garantir leitura do footer/scroll se houver */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/20 to-transparent"></div>
         </motion.div>
       </AnimatePresence>
     </div>

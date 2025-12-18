@@ -18,7 +18,7 @@ const ProjectCard = ({ project, onWantProject, onImageClick }) => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="relative group"
       >
-        <div 
+        <div
           className="relative aspect-[4/3] overflow-hidden bg-brand-bg-surface rounded-sm cursor-pointer"
           onClick={onImageClick}
         >
@@ -73,57 +73,59 @@ const ProjectCard = ({ project, onWantProject, onImageClick }) => {
         )}
 
         {/* CTA Contextual - Discreto */}
-        <motion.a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={onWantProject}
-          className="inline-block group/btn"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="relative inline-flex items-center gap-3 px-6 py-3 border border-brand-olive bg-brand-olive text-white transition-all duration-300 overflow-hidden">
-            {/* Shimmer effect - contínuo */}
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut",
-              }}
-            ></motion.div>
-            
-            <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
-              Desejo um projeto assim
-            </span>
-            <div className="relative z-10 w-0.5 h-4 bg-white/30 transition-colors duration-300"></div>
-            <motion.svg
-              className="relative z-10 w-4 h-4 transition-colors duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{
-                x: [0, 4, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </motion.svg>
-          </div>
-        </motion.a>
+        {/* CTA Contextual - Discreto */}
+        <div className="flex justify-center md:justify-start">
+          <motion.a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onWantProject}
+            className="inline-block group/btn"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="relative inline-flex items-center gap-3 px-6 py-3 border border-brand-olive bg-brand-olive text-white transition-all duration-300 overflow-hidden">
+              {/* Shimmer effect - Premium Shine */}
+              <motion.div
+                className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent w-[200%]"
+                initial={{ x: '-150%' }}
+                animate={{ x: '150%' }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                  ease: "easeInOut",
+                }}
+              ></motion.div>
+
+              <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
+                Desejo um projeto assim
+              </span>
+              <div className="relative z-10 w-0.5 h-4 bg-white/30 transition-colors duration-300"></div>
+              <motion.svg
+                className="relative z-10 w-4 h-4 transition-colors duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                animate={{
+                  x: [0, 4, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </motion.svg>
+            </div>
+          </motion.a>
+        </div>
       </motion.div>
     </div>
   )

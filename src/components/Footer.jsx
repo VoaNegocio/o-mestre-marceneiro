@@ -8,15 +8,15 @@ const Footer = () => {
     <footer className="bg-brand-bg-surface border-t border-brand-border text-brand-text-primary py-12 md:py-16 px-4 relative overflow-hidden">
       {/* Gradiente sutil com verde oliva */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#4A5D46]/3 via-transparent to-[#4A5D46]/5"></div>
-      
+
       {/* Padrão de textura em verde oliva */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='lines' x='0' y='0' width='100' height='20' patternUnits='userSpaceOnUse'%3E%3Cline x1='0' y1='0' x2='100' y2='0' stroke='%234A5D46' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23lines)'/%3E%3C/svg%3E")`,
         }}
       ></div>
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
           {/* Sobre */}
@@ -42,8 +42,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#beneficios" className="font-sans text-brand-text-secondary hover:text-brand-olive transition-colors">
-                  Excelência
+                <a href="#depoimentos" className="font-sans text-brand-text-secondary hover:text-brand-olive transition-colors">
+                  Depoimentos
                 </a>
               </li>
               <li>
