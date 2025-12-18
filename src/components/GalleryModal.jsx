@@ -37,8 +37,8 @@ function GalleryModal({
 
   return (
     <div
-      // CORREÇÃO AQUI: 'items-center' em vez de 'items-start' e remoção de paddings complexos
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 cursor-pointer overflow-hidden"
+      // CORREÇÃO: 'items-center' garante alinhamento vertical. 'p-4' define margem segura.
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 md:p-8 cursor-pointer overflow-hidden"
       onClick={onClose}
     >
       {/* Overlay com feedback visual */}
@@ -46,8 +46,8 @@ function GalleryModal({
 
       {/* Container do modal */}
       <div
-        // Ajuste de altura máxima para mobile (95vh) para aproveitar melhor a tela
-        className="relative max-w-5xl w-full max-h-[95vh] md:max-h-[90vh] cursor-default flex flex-col"
+        // Ajuste de altura máxima para mobile (85vh) para prevenir corte por causa do padding parent
+        className="relative max-w-5xl w-full max-h-[85vh] md:max-h-[90vh] cursor-default flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Container da imagem e conteúdo */}
@@ -118,11 +118,10 @@ function GalleryModal({
                   <button
                     key={index}
                     onClick={(e) => { e.stopPropagation(); onSelectImage(index); }}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'w-8 bg-brand-olive'
-                        : 'w-1 bg-brand-border hover:bg-brand-olive/50'
-                    }`}
+                    className={`h-1 rounded-full transition-all duration-300 ${index === currentIndex
+                      ? 'w-8 bg-brand-olive'
+                      : 'w-1 bg-brand-border hover:bg-brand-olive/50'
+                      }`}
                   />
                 ))}
               </div>

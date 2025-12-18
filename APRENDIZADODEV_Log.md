@@ -5467,3 +5467,76 @@ const [currentIndex, setCurrentIndex] = useState(0) // Índice do carrossel
 - [ ] A/B testing de CTAs
 
 ---
+
+---
+
+## 🛠️ Ferramenta: Script de Otimização de Imagens (Python)
+
+**Descrição:** Script Python para otimizar imagens em lote (jpg, png) redimensionando para Full HD (1920px) e comprimindo sem perda visual perceptível. Reduz drasticamente o peso do site.
+
+**Como usar:**
+1. Crie um arquivo `optimize.py` na raiz ou pasta `scripts/`.
+2. Ajuste o `target_dir` para a pasta de imagens desejada.
+3. Execute `python3 optimize.py`.
+
+```python
+import os
+import subprocess
+import glob
+
+def get_size(path):
+    return os.path.getsize(path)
+
+def optimize_image(path):
+    try:
+        original_size = get_size(path)
+        
+        # Sips command (macOS native):
+        # -Z 1920 : Resample height and width to max 1920 (maintaining aspect ratio)
+        # -s formatOptions 80 : Set JPEG quality to 80%
+        
+        cmd = [
+            "sips", 
+            "-Z", "1920", 
+            "-s", "format", "jpeg", 
+            "-s", "formatOptions", "80", 
+            path, 
+            "--out", path
+        ]
+        
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        new_size = get_size(path)
+        saved = original_size - new_size
+        percent = (saved / original_size) * 100 if original_size > 0 else 0
+        
+        print(f"Optimized: {os.path.basename(path)}")
+        print(f"  Old: {original_size/1024/1024:.2f} MB")
+        print(f"  New: {new_size/1024/1024:.2f} MB")
+        print(f"  Saved: {percent:.1f}%")
+        return saved
+    except Exception as e:
+        print(f"Error optimizing {path}: {e}")
+        return 0
+
+def main():
+    target_dir = "public/projetos" # Ajuste o diretório alvo aqui
+    # Recursive search for images
+    extensions = ["*.jpg", "*.jpeg", "*.png"]
+    files = []
+    for ext in extensions:
+        files.extend(glob.glob(f"{target_dir}/**/{ext}", recursive=True))
+        
+    print(f"Found {len(files)} images to check...")
+    
+    total_saved = 0
+    for file_path in files:
+        # Only optimize if > 500KB to save time/quality on small icons
+        if get_size(file_path) > 500 * 1024:
+            total_saved += optimize_image(file_path)
+            
+    print(f"\nTotal space saved: {total_saved/1024/1024:.2f} MB")
+
+if __name__ == "__main__":
+    main()
+```
