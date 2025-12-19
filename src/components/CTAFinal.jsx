@@ -174,18 +174,7 @@ const CTAFinal = () => {
               }}
               className="inline-flex items-center gap-3 border border-[#25D366] bg-[#25D366] text-white px-8 md:px-10 py-4 md:py-5 transition-all duration-300 overflow-hidden group/btn w-full justify-center rounded-sm"
             >
-              {/* Shimmer effect - White shine on Green */}
-              <motion.div
-                className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent w-[200%]"
-                initial={{ x: '-150%' }}
-                animate={{ x: '150%' }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  ease: "easeInOut",
-                }}
-              ></motion.div>
+
 
 
               <span className="relative z-10 font-sans text-sm md:text-base font-medium transition-colors duration-300">
