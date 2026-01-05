@@ -64,7 +64,8 @@ const Sobre = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="will-change-transform"
           >
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
               A <span className="text-brand-bg-light/90">Herança</span> do Artesanato
@@ -121,8 +122,8 @@ const Sobre = () => {
                     key={index}
                     onClick={() => scrollToSlide(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index
-                        ? 'w-6 bg-white/90'
-                        : 'w-2 bg-white/20 hover:bg-white/40'
+                      ? 'w-6 bg-white/90'
+                      : 'w-2 bg-white/20 hover:bg-white/40'
                       }`}
                     aria-label={`Ir para item ${index + 1}`}
                   />
@@ -136,7 +137,7 @@ const Sobre = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="relative hidden lg:block"
           >
             <div className="aspect-square bg-brand-bg-surface/10 border border-white/10 flex items-center justify-center overflow-hidden backdrop-blur-sm">

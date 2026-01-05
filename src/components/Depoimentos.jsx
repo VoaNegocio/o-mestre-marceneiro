@@ -70,8 +70,8 @@ const Depoimentos = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-12 md:mb-16"
+                    transition={{ duration: 0.35 }}
+                    className="text-center mb-12 md:mb-16 will-change-transform"
                 >
                     <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text-primary mb-4 tracking-tight">
                         Nossos <span className="text-brand-olive">Clientes</span>
@@ -94,9 +94,9 @@ const Depoimentos = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
                             whileHover={{ y: -4 }}
-                            className="min-w-[85%] md:min-w-0 snap-center group p-8 border border-brand-border bg-brand-bg-surface hover:shadow-xl hover:border-brand-olive/30 transition-all duration-300 relative rounded-sm flex flex-col items-center text-center mx-2 md:mx-0 first:ml-4 last:mr-4 md:first:ml-0 md:last:mr-0"
+                            className="min-w-[85%] md:min-w-0 snap-center group p-8 border border-brand-border bg-brand-bg-surface hover:shadow-xl hover:border-brand-olive/30 transition-all duration-300 relative rounded-sm flex flex-col items-center text-center mx-2 md:mx-0 first:ml-4 last:mr-4 md:first:ml-0 md:last:mr-0 will-change-transform"
                         >
                             {/* Aspas decorativas */}
                             <div className="absolute top-4 left-6 text-6xl font-serif text-brand-olive/10 group-hover:text-brand-olive/20 transition-colors duration-300">
@@ -149,7 +149,7 @@ const Depoimentos = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.35 }}
                     className="text-center"
                 >
                     <motion.a

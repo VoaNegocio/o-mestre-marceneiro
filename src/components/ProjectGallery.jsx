@@ -80,44 +80,44 @@ const ProjectGallery = () => {
 
       {/* Aviso de deslizar - Mobile apenas */}
       {activeProjects.length > 1 && (
-        <motion.div 
+        <motion.div
           className="text-center mb-6 md:hidden"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
         >
           <div className="inline-flex items-center gap-3 px-4 py-2 bg-brand-bg-surface/60 backdrop-blur-sm border border-brand-border rounded-sm">
-            <motion.svg 
-              className="w-3.5 h-3.5 text-brand-text-secondary" 
-              fill="none" 
-              stroke="currentColor" 
+            <motion.svg
+              className="w-3.5 h-3.5 text-brand-text-secondary"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
               animate={{ x: [-2, 0, -2] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2.5} 
-                d="M15 19l-7-7 7-7" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M15 19l-7-7 7-7"
               />
             </motion.svg>
             <span className="font-sans text-xs font-medium text-brand-text-secondary tracking-wide uppercase">
               deslizar
             </span>
-            <motion.svg 
-              className="w-3.5 h-3.5 text-brand-text-secondary" 
-              fill="none" 
-              stroke="currentColor" 
+            <motion.svg
+              className="w-3.5 h-3.5 text-brand-text-secondary"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
               animate={{ x: [2, 0, 2] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2.5} 
-                d="M9 5l7 7-7 7" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M9 5l7 7-7 7"
               />
             </motion.svg>
           </div>
@@ -126,14 +126,14 @@ const ProjectGallery = () => {
 
       {/* Display do Projeto - Com transição suave */}
       <div className="relative min-h-[600px] md:min-h-[700px]">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {currentProject && (
             <motion.div
               key={`${activeCategory}-${currentIndex}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              transition={{ duration: 0.3 }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
@@ -145,7 +145,7 @@ const ProjectGallery = () => {
                   prevProject()
                 }
               }}
-              className="cursor-grab active:cursor-grabbing"
+              className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing will-change-transform"
             >
               <ProjectCard
                 project={currentProject}
@@ -207,11 +207,10 @@ const ProjectGallery = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  index === currentIndex
-                    ? 'w-8 bg-brand-olive'
-                    : 'w-1.5 bg-brand-border hover:bg-brand-olive/50'
-                }`}
+                className={`h-1.5 transition-all duration-300 rounded-full ${index === currentIndex
+                  ? 'w-8 bg-brand-olive'
+                  : 'w-1.5 bg-brand-border hover:bg-brand-olive/50'
+                  }`}
                 aria-label={`Ir para projeto ${index + 1}`}
               />
             ))}

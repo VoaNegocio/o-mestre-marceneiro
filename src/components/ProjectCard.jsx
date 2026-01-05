@@ -15,7 +15,7 @@ const ProjectCard = ({ project, onWantProject, onImageClick }) => {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: 30 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
         className="relative group"
       >
         <div
@@ -42,7 +42,7 @@ const ProjectCard = ({ project, onWantProject, onImageClick }) => {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -30 }}
-        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+        transition={{ duration: 0.35, ease: 'easeOut', delay: 0.1 }}
         className="space-y-6"
       >
         {/* Título do projeto - Serifado */}

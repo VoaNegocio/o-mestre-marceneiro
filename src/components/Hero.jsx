@@ -22,8 +22,8 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-block mb-8 px-4 py-2 border border-brand-olive/30 bg-brand-bg-surface backdrop-blur-sm"
+          transition={{ duration: 0.3, delay: 0.1 }}
+          className="inline-block mb-8 px-4 py-2 border border-brand-olive/30 bg-brand-bg-surface backdrop-blur-sm will-change-transform"
         >
           <span className="font-sans text-xs md:text-sm text-brand-text-secondary tracking-widest uppercase">
             Ateliê • Herança • Bespoke
@@ -34,14 +34,15 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-          className="inline-block px-6 md:px-8 lg:px-10 py-4 md:py-6 lg:py-8 mb-6 md:mb-8 rounded-lg"
+          transition={{ duration: 0.35, ease: 'easeOut', delay: 0.15 }}
+          className="inline-block px-6 md:px-8 lg:px-10 py-4 md:py-6 lg:py-8 mb-6 md:mb-8 rounded-lg will-change-transform"
           style={{
-            background: 'rgba(255, 255, 255, 0.75)', // Mais opacidade para contraste
-            backdropFilter: 'blur(12px)', // Mais blur para suavidade
+            background: 'rgba(255, 255, 255, 0.75)',
+            backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.6)', // Borda mais definida
-            boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1)', // Sombra mais profunda
+            border: '1px solid rgba(255, 255, 255, 0.6)',
+            boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1)',
+            transform: 'translateZ(0)', // Force GPU layer
           }}
         >
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-text-primary leading-tight tracking-tight">
@@ -56,14 +57,15 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
-          className="inline-block px-5 md:px-6 lg:px-8 py-3 md:py-4 lg:py-5 mb-10 md:mb-14 rounded-lg max-w-3xl mx-auto"
+          transition={{ duration: 0.35, ease: 'easeOut', delay: 0.2 }}
+          className="inline-block px-5 md:px-6 lg:px-8 py-3 md:py-4 lg:py-5 mb-10 md:mb-14 rounded-lg max-w-3xl mx-auto will-change-transform"
           style={{
-            background: 'rgba(255, 255, 255, 0.75)', // Opacidade aumentada para consistência
+            background: 'rgba(255, 255, 255, 0.75)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(255, 255, 255, 0.6)',
             boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            transform: 'translateZ(0)',
           }}
         >
           <p className="font-sans text-lg md:text-xl lg:text-2xl text-brand-text-secondary leading-relaxed">
@@ -75,10 +77,11 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
+          transition={{ duration: 0.35, ease: 'easeOut', delay: 0.25 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 will-change-transform"
         >
           <motion.button
+            id="hero-cta-whatsapp"
             onClick={handleCTAClick}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -114,6 +117,7 @@ const Hero = () => {
           </motion.button>
 
           <motion.a
+            id="hero-cta-gallery"
             href="#projetos"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

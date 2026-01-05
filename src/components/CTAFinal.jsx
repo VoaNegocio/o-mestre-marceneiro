@@ -50,6 +50,7 @@ const CTAFinal = () => {
           >
             {/* Overlay link para redirecionar */}
             <a
+              id="footer-map-link"
               href={googleMapsClickUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -100,6 +101,7 @@ const CTAFinal = () => {
                     Ateliê
                   </h4>
                   <a
+                    id="footer-address-text-link"
                     href={googleMapsClickUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -120,6 +122,7 @@ const CTAFinal = () => {
                     WhatsApp
                   </h4>
                   <a
+                    id="footer-whatsapp-text-link"
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -148,6 +151,7 @@ const CTAFinal = () => {
 
             {/* CTA Button - WhatsApp Green Pulse */}
             <motion.a
+              id="footer-cta-whatsapp"
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
